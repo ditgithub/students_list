@@ -1,0 +1,14 @@
+class Student < ActiveRecord::Base
+  has_many :projects
+  self.per_page = 2
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, presence: true
+  #validates :login_name, uniqueness: true
+  after_validation :set_loginname, on: [ :create, :update ]
+  
+  protected
+    def set_loginname
+       self.login_name = self.last_name + "_" + self.first_name
+    end
+end

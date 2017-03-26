@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>StudentsList</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="mainContentArea">
+        <div id="contentBox">
+        <div id="title">Student Projects</div>
+
+            <div class="pageContent">
+              <p class="navbar-text pull-right">
+              <% if user_signed_in? %>
+                Logged in as <strong><%= current_user.email %></strong>.<br>
+                <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+              <% else %>
+                <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+                <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+              <% end %>
+            </div>
+
+        <div id="linkGroup">
+           <div class="link"><%= link_to "Students", students_path %></div>
+           <div class="link"><%= link_to "Projects", projects_path %></div>
+            <div class="link">
+              <% if session[:student_admin] %>
+                   <a href="/student_admin/logout">Admin Logout</a>
+              <% else %>
+                   <a href="/student_admin/login">Admin Login</a>
+              <% end %>
+            </div>
+        </div>
+
+        <div id="blueBox">
+          <div id="header"></div>
+          <div class="contentTitle">Welcome to Students and Projects Information Site</div>
+            <div class="pageContent">
+               <% if notice %>
+                 <p class="alert alert-success"><%= notice %></p>
+               <% end %>
+               <% if alert %>
+                 <p class="alert alert-danger"><%= alert %></p>
+               <% end %>
+               <%= yield %>
+            </div>
+            <div id="footer"><a href="http://www.aszx.net">web development</a> by <a href="http://www.bryantsmith.com">bryant smith</a></div>
+        </div>
+        </div>
+</div>
+
+
+</body>
+</html>

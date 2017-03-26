@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>StudentsList</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="mainContentArea">
+        <div id="contentBox">
+        <div id="title">Student Projects</div>
+
+        <div id="linkGroup">
+            <div class="link"><a href="">Students</a></div>
+            <div class="link"><a href="projects">Projects</a></div>
+        </div>
+
+        <div id="blueBox">
+          <div id="header"></div>
+          <div class="contentTitle">Welcome to Students and Projects Information Site</div>
+            <div class="pageContent">
+               <%= yield %>
+            </div>
+            <div id="footer"><a href="http://www.aszx.net">web development</a> by <a href="http://www.bryantsmith.com">bryant smith</a></div>
+        </div>
+        </div>
+</div>
+
+
+</body>
+</html>

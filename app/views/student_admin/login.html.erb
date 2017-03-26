@@ -1,0 +1,15 @@
+<h2>Student Admin Login</h2>
+<%= flash[:notice] %>
+<%= form_for(:student_admin) do |f| %>
+   <div class="field">
+      <%= f.label :student_admin_name %><br>
+      <%= f.text_field :student_admin_name %><br>
+   </div>
+   <div class="field">
+      <%= f.label :student_admin_password %><br>
+      <%= f.password_field :student_admin_password %><br>
+   </div>
+   <div class="actions">
+      <%= f.submit "Login" %>
+   </div>
+<% end %>
